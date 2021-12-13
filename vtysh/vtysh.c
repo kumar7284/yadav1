@@ -1893,7 +1893,7 @@ DEFUNSH(VTYSH_KEYS, key, key_cmd, "key (0-2147483647)",
 
 #ifdef HAVE_RIPD
 DEFUNSH(VTYSH_RIPD, router_rip, router_rip_cmd, "router rip [vrf NAME]",
-	ROUTER_STR "RIP\n" VRF_CMD_HELP_STR)
+	ROUTER_STR "Routing Information Protocol\n" VRF_CMD_HELP_STR)
 {
 	vty->node = RIP_NODE;
 	return CMD_SUCCESS;
