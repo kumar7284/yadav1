@@ -1594,8 +1594,10 @@ void rip_redistribute_add(struct rip *rip, int type, int sub_type,
 
 	if (IS_RIP_DEBUG_EVENT)
        	{
-
-		 zlog_debug("Redistribute new prefix %pFX version_send %d version_recvice %d  socket %d table %pFX neighbor %pI4,distance %d,default-metric %d update_time %u timeout-time %u garbage-time %u",p,rip->version_send,rip->version_recv,rip->sock,rip->table,rip->neighbor,rip->distance,rip->default_metric,rip->update_time,rip->timeout_time,rip->garbage_time);
+		 zlog_debug("Redistribute new prefix %pFX,version_send%d,version_recvice%d,socket%d, table%pFX,neighbor%pI4,distance%d,default-metric%dupdate_time%u,timeout-time%u,garbage-time %u",
+				 p,rip->version_send,rip->version_recv,rip->sock,rip->table,
+				 rip->neighbor,rip->distance,rip->default_metric,
+				 rip->update_time,rip->timeout_time,rip->garbage_time);
 	}
 
 
