@@ -1592,9 +1592,14 @@ void rip_redistribute_add(struct rip *rip, int type, int sub_type,
 	} else
 		(void)rip_ecmp_add(rip, &newinfo);
 
-	if (IS_RIP_DEBUG_EVENT) {
-		zlog_debug("Redistribute new prefix %pFX", p);
+	if (IS_RIP_DEBUG_EVENT)
+       	{
+		 zlog_debug("Redistribute new prefix %pFX,version_send %d,version_receive %d,socket %d,trigger %d,neighbor%pI4,distance%d,default-metric %d,update_time %u,timeout-time %u,garbage-time %u",
+				 p,rip->version_send,rip->version_recv,rip->sock,rip->trigger,
+				 rip->neighbor,rip->distance,rip->default_metric,
+				 rip->update_time,rip->timeout_time,rip->garbage_time);
 	}
+
 
 	rip_event(rip, RIP_TRIGGERED_UPDATE, 0);
 }
