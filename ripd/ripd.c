@@ -1780,9 +1780,11 @@ static int rip_read(struct thread *t)
 
 	/* RIP packet received */
 	if (IS_RIP_DEBUG_EVENT)
-		zlog_debug("RECV packet from %pI4 port %d on %s (VRF %s)",
+		zlog_debug("RECV packet from %pI4 port %d on %s (VRF %s)Command : %d, Version : %d, AFI : %d, Metric : %d ",
 			   &from.sin_addr, ntohs(from.sin_port),
-			   ifp ? ifp->name : "unknown", rip->vrf_name);
+			   ifp ? ifp->name : "unknown", rip->vrf_name,
+			   rip_buf.rip_packet.command,rip_buf.rip_packet.version,
+			   rip_buf.rip_packet.rte->family, rip_buf.rip_packet.rte->metric);
 
 	/* If this packet come from unknown interface, ignore it. */
 	if (ifp == NULL) {
